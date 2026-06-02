@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengumuman Kelulusan SD Negeri 79 Lajae</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Times New Roman", serif;
+}
+
+body{
+    background:#f5f7fa;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+    overflow:hidden;
+}
+
+.header{
+    padding:20px;
+    border-bottom:4px solid #000;
+}
+
+.header-content{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    width:90px;
+}
+
+.school{
+    flex:1;
+    text-align:center;
+}
+
+.school h3{
+    font-size:18px;
+    font-weight:normal;
+}
+
+.school h2{
+    font-size:20px;
+    margin:4px 0;
+}
+
+.school h1{
+    font-size:24px;
+    margin:4px 0;
+}
+
+.school p{
+    font-size:16px;
+}
+
+.title{
+    text-align:center;
+    padding:25px 20px;
+}
+
+.title h2{
+    color:#0f172a;
+}
+
+.search-box{
+    padding:0 30px 30px;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+.search-box button{
+    width:100%;
+    padding:14px;
+    border:none;
+    background:#0f766e;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.search-box button:hover{
+    background:#115e59;
+}
+
+.result{
+    display:none;
+    margin:0 30px 30px;
+    border:2px solid #16a34a;
+    border-radius:10px;
+    padding:25px;
+    background:#f0fdf4;
+}
+
+.result h3{
+    margin-bottom:10px;
+}
+
+.lulus{
+    margin-top:20px;
+    background:#16a34a;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:8px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.notfound{
+    display:none;
+    margin:0 30px 30px;
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:15px;
+    border-radius:8px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+    <div class="header-content">
+
+```
+    <img src="logo.png" class="logo">
+
+    <div class="school">
+        <h3>PEMERINTAH KABUPATEN BULUKUMBA</h3>
+        <h2>DINAS PENDIDIKAN DAN KEBUDAYAAN</h2>
+        <h1>SD NEGERI 79 LAJAE</h1>
+        <p>Lajae Desa Jo'jolo Kecamatan Bulukumpa</p>
+    </div>
+
+</div>
+```
+
+</div>
+
+<div class="title">
+    <h2>PENGUMUMAN KELULUSAN</h2>
+    <h3>TAHUN PELAJARAN 2025/2026</h3>
+</div>
+
+<div class="search-box">
+    <input type="text" id="keyword" placeholder="Masukkan NISN atau Nama Siswa">
+    <button onclick="cekKelulusan()">Lihat Hasil</button>
+</div>
+
+<div id="hasil" class="result">
+    <h3>Nama Siswa</h3>
+    <p id="nama"></p>
+
+```
+<h3 style="margin-top:15px;">NISN</h3>
+<p id="nisn"></p>
+
+<div class="lulus">
+    SELAMAT, ANDA DINYATAKAN LULUS
+    <br>
+    DARI SD NEGERI 79 LAJAE
+</div>
+```
+
+</div>
+
+<div id="notfound" class="notfound">
+    Data tidak ditemukan. Periksa kembali NISN atau nama siswa.
+</div>
+
+</div>
+
+<script>
+
+const siswa = [
+{nisn:"0134958759",nama:"Aditya"},
+{nisn:"0133052499",nama:"AHMAD IKRAM ASYRAF"},
+{nisn:"3146284870",nama:"Ahmad Rifky Sahas"},
+{nisn:"0142137952",nama:"Aisya"},
+{nisn:"0141584444",nama:"Alia Izzatunniza Adni"},
+{nisn:"0146935679",nama:"ASISI ANJANI PUTRI"},
+{nisn:"3136299646",nama:"Atiqah Fairuz Khalisa"},
+{nisn:"3144006517",nama:"Ayu As Hadila"},
+{nisn:"0145385622",nama:"AZZAHRA ASYILA RAHMA"},
+{nisn:"0141977675",nama:"Haerul Akbar"},
+{nisn:"3149560328",nama:"Hartomo"},
+{nisn:"3133845188",nama:"ISNENY"},
+{nisn:"3132990937",nama:"Jessica"},
+{nisn:"0134401308",nama:"Muh Agis"},
+{nisn:"0136340986",nama:"Muh Akbar Anugerah"},
+{nisn:"0142964887",nama:"Muh Faiz"},
+{nisn:"0147345178",nama:"Muh Rifal"},
+{nisn:"0149789118",nama:"MUH. ABIZAR ARNUR"},
+{nisn:"0147359986",nama:"Mutmainna"},
+{nisn:"0145197651",nama:"Naila Aprilianti"},
+{nisn:"0132992889",nama:"Nailatul Azhar"},
+{nisn:"0132699918",nama:"NUR ANNISA"},
+{nisn:"0147178125",nama:"Nur Fadillah"},
+{nisn:"0143458684",nama:"Nur Khaeruni Adan"},
+{nisn:"0149126804",nama:"Padli"},
+{nisn:"0133992317",nama:"Qisya Nabila Khumairah"},
+{nisn:"0147650604",nama:"Rayhan"},
+{nisn:"3105955189",nama:"RINA ALVANA"},
+{nisn:"0137561129",nama:"Rizky Septian Nugraha"},
+{nisn:"3112201622",nama:"Zila Aulia"}
+];
+
+function cekKelulusan(){
+    const key = document.getElementById('keyword').value.toLowerCase().trim();
+
+    const data = siswa.find(
+        s => s.nisn === key ||
+        s.nama.toLowerCase().includes(key)
+    );
+
+    if(data){
+        document.getElementById('nama').innerText = data.nama;
+        document.getElementById('nisn').innerText = data.nisn;
+
+        document.getElementById('hasil').style.display='block';
+        document.getElementById('notfound').style.display='none';
+    }else{
+        document.getElementById('hasil').style.display='none';
+        document.getElementById('notfound').style.display='block';
+    }
+}
+</script>
+
+</body>
+</html>
